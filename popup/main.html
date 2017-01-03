@@ -1,19 +1,31 @@
 <style>
  body {
    font-family: monospace;
-   width: 260px;
+   width: 300px;
  }
  div {
    padding: 8px;
  }
+ h1 {
+  margin-bottom: 8px;
+ }
  #loading { }
  #panel { display: none; }
+ #setup-hint { display: none; }
 </style>
+
 <body>
   <h1>+bookmarks</h1>
 
   <div id="loading">
     Loading...
+  </div>
+
+  <div id="setup-hint">
+    <p>
+      No email set, open add-on settings and set the email address you would
+      like to send to.
+    </p>
   </div>
 
   <div id="panel">
@@ -30,5 +42,5 @@
   </div>
 
 
-  <script src="hole.js"></script>
+  <script src="main.js"></script>
 </body>

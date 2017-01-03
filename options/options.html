@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+     body {
+       font-family: monospace;
+       font-size: 1.4em;
+     }
+     div {
+       padding: 8px;
+     }
+     input {
+       margin-top: 4px;
+       padding: 8px;
+       min-width: 400px;
+       font-size: 1.1em;
+     }
+     small {
+       font-size: 0.7em;
+       color: #888;
+     }
+     #success-message {
+       color: green;
+       display: none;
+     }
+    </style>
+  </head>
+
+  <body>
+    <h1>+bookmarks options</h1>
+    <div>
+      <form>
+        <p>
+          <label>Email: <small>(example: user+bookmarks@example.com)</small>
+            <br/>
+            <input type="text" id="email" >
+          </label>
+        </p>
+        <p>
+          <button type="submit">Save</button>
+        </p>
+        <p id="success-message">
+          Saved!
+        </p>
+      </form>
+    </div>
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,23 +1,24 @@
 {
   "manifest_version": 2,
-  "name": "+hole",
+  "name": "+bookmarks",
   "version": "1.0",
-  "description": "Send a page to the hole",
+  "description": "Bookmarks via email, to a folder of your choice",
   "icons": {
-    "48": "icons/hole-48.png"
+    "48": "icons/icon-48.png"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["hole.js"]
-    }
-  ],
+  "background": {
+      "scripts": ["plus-bookmarks.js"]
+  },
   "browser_action": {
-    "default_icon": "icons/hole-48.png",
-    "default_title": "+hole",
-    "default_popup": "popup/hole.html"
+    "default_icon": "icons/icon-48.png",
+    "default_title": "+bookmarks",
+    "default_popup": "popup/main.html"
+  },
+  "options_ui": {
+    "page": "options/options.html"
   },
   "permissions": [
+    "storage",
     "tabs"
   ]
 }
