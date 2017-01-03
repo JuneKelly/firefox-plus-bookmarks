@@ -5,9 +5,14 @@
   var panel = document.getElementById('panel');
   var setupHint = document.getElementById('setup-hint');
 
+  document.getElementById('open-settings').onclick = function(e) {
+    e.preventDefault();
+    browser.runtime.openOptionsPage();
+    window.close();
+  };
+
   browser.storage.local.get('email').then(
     function(result) {
-      console.log(">> result", result);
       var targetAddress = result.email;
       if (!targetAddress) {
         setupHint.style.display = 'inherit';
