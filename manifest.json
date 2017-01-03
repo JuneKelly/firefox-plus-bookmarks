@@ -6,9 +6,6 @@
   "icons": {
     "48": "icons/icon-48.png"
   },
-  "background": {
-      "scripts": ["plus-bookmarks.js"]
-  },
   "browser_action": {
     "default_icon": "icons/icon-48.png",
     "default_title": "+bookmarks",
