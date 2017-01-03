@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "+hole",
+  "version": "1.0",
+  "description": "Send a page to the hole",
+  "icons": {
+    "48": "icons/hole-48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["hole.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icons/hole-48.png",
+    "default_title": "+hole",
+    "default_popup": "popup/hole.html"
+  },
+  "permissions": [
+    "tabs"
+  ]
+}

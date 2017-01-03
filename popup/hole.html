@@ -1,0 +1,34 @@
+<style>
+ body {
+   font-family: monospace;
+   width: 260px;
+ }
+ div {
+   padding: 8px;
+ }
+ #loading { }
+ #panel { display: none; }
+</style>
+<body>
+  <h1>+bookmarks</h1>
+
+  <div id="loading">
+    Loading...
+  </div>
+
+  <div id="panel">
+    <div>
+      <strong>Title:</strong> <span id="title"></span>
+    </div>
+    <div>
+      <strong>Url:</strong> <span id="url"></span>
+    </div>
+    <div style="float: right">
+      <a id="mail-link" href="mailto:shane+bookmarks@kilkelly.me">Open Email</a>
+    </div>
+    <br/>
+  </div>
+
+
+  <script src="hole.js"></script>
+</body>
