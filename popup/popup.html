@@ -1,17 +1,23 @@
 <style>
  body {
+   padding: 8px;
    font-family: monospace;
    width: 300px;
  }
  div {
-   padding: 8px;
+   padding-top: 8px;
+   padding-bottom: 8px;
  }
  h1 {
-  margin-bottom: 8px;
+  margin-bottom: 0px;
  }
  #loading { }
  #panel { display: none; }
  #setup-hint { display: none; }
+ #mail-link-wrapper {
+   font-size: 1.2em;
+   text-align: center;
+ }
 </style>
 
 <body>
@@ -35,10 +41,9 @@
     <div>
       <strong>Url:</strong> <span id="url"></span>
     </div>
-    <div style="float: right">
+    <div id="mail-link-wrapper">
       <a id="mail-link" href="mailto:shane+bookmarks@kilkelly.me">Open Email</a>
     </div>
-    <br/>
   </div>
 
 
