@@ -1,51 +1,61 @@
-<style>
- body {
-   padding: 8px;
-   font-family: monospace;
-   width: 300px;
- }
- div {
-   padding-top: 8px;
-   padding-bottom: 8px;
- }
- h1 {
-  margin-bottom: 0px;
- }
- #loading { }
- #panel { display: none; }
- #setup-hint { display: none; }
- #mail-link-wrapper {
-   font-size: 1.2em;
-   text-align: center;
- }
-</style>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        padding: 8px;
+        font-family: monospace;
+        width: 300px;
+      }
+      div {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+      h1 {
+        margin-bottom: 0px;
+      }
+      #loading { }
+      #error-panel { display: none; }
+      #preview-panel { display: none; }
+      #setup-hint { display: none; }
+      #mail-link-wrapper {
+        font-size: 1.2em;
+        text-align: center;
+      }
+    </style>
+  </head>
 
-<body>
-  <h1>+bookmarks</h1>
+  <body>
+    <h1>+bookmarks</h1>
 
-  <div id="loading">
-    Loading...
-  </div>
-
-  <div id="setup-hint">
-    <p>
-      No email set, <a href="#" id="open-settings">open add-on settings</a>
-      and set the email address you would like to send to.
-    </p>
-  </div>
-
-  <div id="panel">
-    <div>
-      <strong>Title:</strong> <span id="title"></span>
+    <div id="error-panel">
+      Error: <span id="error-message">something went wrong :(</span>
     </div>
-    <div>
-      <strong>Url:</strong> <span id="url"></span>
+
+    <div id="loading-panel">
+      Loading...
     </div>
-    <div id="mail-link-wrapper">
-      <a id="mail-link" href="mailto:shane+bookmarks@kilkelly.me">Open Email</a>
+
+    <div id="setup-hint">
+      <p>
+        No email set, <a href="#" id="open-settings">open add-on settings</a>
+        and set the email address you would like to send to.
+      </p>
     </div>
-  </div>
+
+    <div id="preview-panel">
+      <div>
+        <strong>Title:</strong> <span id="title"></span>
+      </div>
+      <div>
+        <strong>Url:</strong> <span id="url"></span>
+      </div>
+      <div id="mail-link-wrapper">
+        <a id="mail-link" href="mailto:shane+bookmarks@kilkelly.me">Open Email</a>
+      </div>
+    </div>
 
 
-  <script src="popup.js"></script>
-</body>
+    <script src="popup.js"></script>
+  </body>
+</html>

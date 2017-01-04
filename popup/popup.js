@@ -1,22 +1,50 @@
 // popup js
 
 (function () {
-  var loading = document.getElementById('loading');
-  var panel = document.getElementById('panel');
-  var setupHint = document.getElementById('setup-hint');
+  window.onerror = function(e) {
+    document.querySelector('body').innerText = 'ERROR! '+e;
+  };
 
-  document.getElementById('open-settings').onclick = function(e) {
+  var errorPanel = document.getElementById('error-panel');
+  var errorMessage = document.getElementById('error-message');
+  var loadingPanel = document.getElementById('loading-panel');
+  var previewPanel = document.getElementById('preview-panel');
+  var setupHint = document.getElementById('setup-hint');
+  var settingsLink = document.getElementById('open-settings');
+
+  var showErrorPanel = function(message) {
+    errorMessage.innerText = message || 'Something went wrong :(';
+    errorPanel.style.display = 'inherit';
+    loadingPanel.style.display = 'none';
+    setupHint.style.display = 'none';
+    previewPanel.style.display = 'none';
+  };
+
+  var showPreviewPanel = function() {
+    errorPanel.style.display = 'none';
+    loadingPanel.style.display = 'none';
+    setupHint.style.display = 'none';
+    previewPanel.style.display = 'inherit';
+  };
+
+  var showSetupHint = function() {
+    errorPanel.style.display = 'none';
+    loadingPanel.style.display = 'none';
+    setupHint.style.display = 'inherit';
+    previewPanel.style.display = 'none';
+  };
+
+  settingsLink.onclick = function settingsLinkClickHandler(e) {
     e.preventDefault();
     browser.runtime.openOptionsPage();
     window.close();
   };
 
   browser.storage.local.get('email').then(
-    function(result) {
+    function resultHandler(result) {
       var targetAddress = result.email;
       if (!targetAddress) {
-        setupHint.style.display = 'inherit';
-        loading.style.display = 'none';
+        showSetupHint();
         return;
       }
       var url = null;
@@ -30,9 +58,7 @@
       gettingActiveTab.then((tabs) => {
         if (tabs[0]) {
           // done loading
-          loading.style.display = 'none';
-          setupHint.style.display = 'none';
-          panel.style.display = 'inherit';
+          showPreviewPanel();
 
           title = tabs[0].title;
           url = tabs[0].url;
@@ -49,9 +75,8 @@
       });
 
     },
-    function error() {
-      setupHint.style.display = 'inherit';
-      loading.style.display = 'none';
+    function errorHandler(e) {
+      showErrorPanel(e.message);
     }
   );
 
