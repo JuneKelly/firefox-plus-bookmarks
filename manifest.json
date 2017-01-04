@@ -4,10 +4,11 @@
   "version": "1.0",
   "description": "Bookmarks via email, to a folder of your choice",
   "icons": {
-    "48": "icons/icon-48.png"
+    "48": "icons/plus-b-48.png",
+    "96": "icons/plus-b-96.png"
   },
   "browser_action": {
-    "default_icon": "icons/icon-48.png",
+    "default_icon": "icons/plus-b-48.png",
     "default_title": "+bookmarks",
     "default_popup": "popup/popup.html"
   },
