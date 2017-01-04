@@ -2,7 +2,11 @@
   "manifest_version": 2,
   "name": "+bookmarks",
   "version": "1.0",
-  "description": "Bookmarks via email, to a folder of your choice",
+  "description": "Bookmarks via email, to a +folder of your choice",
+  "developer": {
+    "name": "Shane Kilkelly",
+    "url": "https://github.com/ShaneKilkelly/firefox-plus-bookmarks"
+  },
   "icons": {
     "48": "icons/plus-b-48.png",
     "96": "icons/plus-b-96.png"
