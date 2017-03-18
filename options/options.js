@@ -10,12 +10,12 @@ if (_browser === null) {
 }
 
 function saveOptions(e) {
+  e.preventDefault();
   _browser.storage.local.set({
     email: document.querySelector("#email").value
   }, function() {
     var successMessage = document.getElementById('success-message');
     successMessage.style.display = 'inherit';
-    e.preventDefault();
   });
 }
 

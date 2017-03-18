@@ -80,13 +80,13 @@
           var encodedUrl = encodeURI(url);
           var mailToLink = 'mailto:'+targetAddress+'?subject='+encodedTitle+'&body='+encodedUrl;
           mailLink.href = mailToLink;
-          var debug = document.getElementById('debug');
-          debug.innerText = mailLink.href;
+          // var debug = document.getElementById('debug');
+          // debug.innerText = mailLink.href;
 
           mailLink.onclick = (e) => {
             e.preventDefault();
             _browser.tabs.create({url: mailToLink, active: false}, (tab) => {
-              var timeoutInMs = 1000;
+              var timeoutInMs = 100;
               setTimeout(
                 function() {
                   chrome.tabs.remove(tab.id);
