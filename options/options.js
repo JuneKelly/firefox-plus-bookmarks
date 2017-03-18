@@ -1,16 +1,27 @@
+var _browser = null;
+if (typeof browser !== 'undefined') {
+    _browser = browser;
+  }
+if (typeof chrome !== 'undefined') {
+  _browser = chrome;
+}
+if (_browser === null) {
+  throw new Error("Can't initialize");
+}
+
 function saveOptions(e) {
-  browser.storage.local.set({
+  _browser.storage.local.set({
     email: document.querySelector("#email").value
+  }, function() {
+    var successMessage = document.getElementById('success-message');
+    successMessage.style.display = 'inherit';
+    e.preventDefault();
   });
-  var successMessage = document.getElementById('success-message');
-  successMessage.style.display = 'inherit';
-  e.preventDefault();
 }
 
 function restoreOptions() {
-  var gettingItem = browser.storage.local.get('email');
-  gettingItem.then((res) => {
-    document.querySelector("#email").value = res.email || '';
+  _browser.storage.local.get('email', function(result) {
+    document.querySelector('#email').value = result.email || '';
   });
 }
 

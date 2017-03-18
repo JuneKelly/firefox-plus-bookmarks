@@ -1,6 +1,16 @@
 // popup js
 
 (function () {
+  var _browser = null;
+  if (typeof browser !== 'undefined') {
+    _browser = browser;
+  }
+  if (typeof chrome !== 'undefined') {
+    _browser = chrome;
+  }
+  if (_browser === null) {
+    throw new Error("Can't initialize");
+  }
   window.onerror = function(e) {
     document.querySelector('body').innerText = 'ERROR! '+e;
   };
@@ -36,12 +46,13 @@
 
   settingsLink.onclick = function settingsLinkClickHandler(e) {
     e.preventDefault();
-    browser.runtime.openOptionsPage();
+    _browser.runtime.openOptionsPage();
     window.close();
   };
 
-  browser.storage.local.get('email').then(
-    function resultHandler(result) {
+  _browser.storage.local.get(
+    'email',
+    function(result) {
       var targetAddress = result.email;
       if (!targetAddress) {
         showSetupHint();
@@ -54,8 +65,7 @@
       var urlElement = document.getElementById('url');
       var mailLink = document.getElementById('mail-link');
 
-      var gettingActiveTab = browser.tabs.query({active: true, currentWindow: true});
-      gettingActiveTab.then((tabs) => {
+      _browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
         if (tabs[0]) {
           // done loading
           showPreviewPanel();
@@ -68,15 +78,26 @@
 
           var encodedTitle = encodeURI(title);
           var encodedUrl = encodeURI(url);
-          mailLink.href = (
-            'mailto:'+targetAddress+'?subject='+encodedTitle+'&body='+encodedUrl
-          );
+          var mailToLink = 'mailto:'+targetAddress+'?subject='+encodedTitle+'&body='+encodedUrl;
+          mailLink.href = mailToLink;
+          var debug = document.getElementById('debug');
+          debug.innerText = mailLink.href;
+
+          mailLink.onclick = (e) => {
+            e.preventDefault();
+            _browser.tabs.create({url: mailToLink, active: false}, (tab) => {
+              var timeoutInMs = 500;
+              setTimeout(
+                function() {
+                  chrome.tabs.remove(tab.id);
+                },
+                timeoutInMs
+              );
+            });
+          };
         }
       });
 
-    },
-    function errorHandler(e) {
-      showErrorPanel(e.message);
     }
   );
 
