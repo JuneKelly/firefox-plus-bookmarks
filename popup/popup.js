@@ -86,7 +86,7 @@
           mailLink.onclick = (e) => {
             e.preventDefault();
             _browser.tabs.create({url: mailToLink, active: false}, (tab) => {
-              var timeoutInMs = 100;
+              var timeoutInMs = 1000;
               setTimeout(
                 function() {
                   chrome.tabs.remove(tab.id);
