@@ -47,7 +47,7 @@
       }
     }();
 
-    var setupHint = function () {
+    var setupHintPanel = function () {
       _panel = document.getElementById('setup-hint');
       var settingsLink = document.getElementById('open-settings');
       settingsLink.onclick = function settingsLinkClickHandler(e) {
@@ -76,7 +76,7 @@
     return {
       showError: errorPanel.show,
       showPreview: previewPanel.show,
-      showSetupHint: setupHint.show
+      showSetupHint: setupHintPanel.show
     }
   }();
 
