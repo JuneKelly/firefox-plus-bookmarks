@@ -72,6 +72,11 @@
 
           title = tabs[0].title;
           url = tabs[0].url;
+          if (url.match(/^about:reader.*$/)) {
+            url = decodeURIComponent(
+              url.match(/url=(.*)/)[1]
+            );
+          }
 
           titleElement.innerText = title;
           urlElement.innerText = url;
